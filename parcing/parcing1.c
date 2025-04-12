@@ -6,7 +6,7 @@
 /*   By: ael-azha <ael-azha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:54:56 by ael-azha          #+#    #+#             */
-/*   Updated: 2025/04/10 22:19:17 by ael-azha         ###   ########.fr       */
+/*   Updated: 2025/04/12 23:27:46 by ael-azha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	has_valid_ber_extension(char *filename)
 {
 	int	len;
 
-	len = ft_strlen(filename);
+	len = ft_strlen(filename) - 5;
 	if (len < 5)
 		return (0);
-	if (ft_strncmp(filename + len - 4, ".ber", 4) != 0)
+	if (ft_strncmp(filename + len + 5 - 4, ".ber", 4) != 0)
 		return (0);
 	if (filename[0] == '.' && len == 4)
 		return (0);
@@ -44,7 +44,7 @@ void	check_map_dimensions(t_game *game)
 			exit(1);
 		}
 		i++;
-	}
+	}	
 	if (game->map_width <= 0 || game->map_height <= 0)
 	{
 		ft_printf("Error: Invalid map dimensions!\n");
