@@ -6,23 +6,11 @@
 /*   By: ael-azha <ael-azha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:55:12 by ael-azha          #+#    #+#             */
-/*   Updated: 2025/04/10 20:55:14 by ael-azha         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:19:12 by ael-azha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*int	ft_strlen_(const char *str)*/
-/*{*/
-/*	int	i;*/
-/**/
-/*	i = 0;*/
-/*	if (!str)*/
-/*		return (-1);*/
-/*	while (str[i])*/
-/*		i++;*/
-/*	return (i);*/
-/*}*/
 
 static char	*ft_strlcpy_(char *dest, char *src, int len)
 {

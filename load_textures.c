@@ -6,7 +6,7 @@
 /*   By: ael-azha <ael-azha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 20:55:32 by ael-azha          #+#    #+#             */
-/*   Updated: 2025/04/10 21:16:29 by ael-azha         ###   ########.fr       */
+/*   Updated: 2025/04/13 18:53:57 by ael-azha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	load_textures(t_game *game)
 	load_texture(game, "textures/player.xpm", 0);
 	load_texture(game, "textures/wall.xpm", 1);
 	load_texture(game, "textures/empty.xpm", 2);
-	load_texture(game, "textures/money6.xpm", 3);
-	load_texture(game, "textures/gate.xpm", 4);
+	load_texture(game, "textures/coin.xpm", 3);
+	load_texture(game, "textures/door.xpm", 4);
 }
 
 void	free_textures(t_game *game)
