@@ -1,40 +1,44 @@
-NAME = so_long
-
-SRC = so_long.c read_map.c render_map.c ft_printf/ft_printf.c ft_printf/ft_printf_functions.c \
-			get_next_line.c get_next_line_utils.c handle_key_press.c load_textures.c validate_map.c \
-			valid_path.c parcing/parcing1.c parcing/parcing2.c
-
-OBJ = $(SRC:.c=.o)
-
+#flags
 CC = cc
+CFLAGS = -Wall -Wextra -Werror -Iincludes $(LIBFT_INC)
+MLXLIB = -lXext -lX11 -lm -lz
+LIBMLX = -L./usr/local/lib -lmlx
+INCLUDE = -I./usr/local/include
+LIBFT_INC = -I$(LIBFT_DIR)
+LIBFT_LINK = -L$(LIBFT_DIR) -l:libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+#resource
+SRCS = main.c src/ft_error.c src/ft_read_file.c src/ft_render.c \
+src/ft_valid_map.c src/ft_extra_fun.c src/ft_find_items.c src/ft_interactive.c
+OBJECTS = $(SRCS:%.c=$(OBJDIR)/%.o)
+LIBFT_DIR = includes
+OBJDIR = obj
+LIBFT = $(LIBFT_DIR)/libft.a
 
-
-MLXFLAGS = -lmlx -lXext -lX11
-
-LIBFT = libft/libft.a
+NAME = so_long
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MLX)
-	$(CC) $(OBJ) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+$(NAME): $(OBJECTS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBMLX) $(MLXLIB) $(LIBFT_LINK) -o $(NAME)
 
-$(LIBFT): FORCE
-	@make -C libft --no-print-directory
+$(LIBFT):
+	make -C $(LIBFT_DIR) all
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)/src
 
 clean:
-	rm -f $(OBJ)
-	@make clean -C libft --no-print-directory
+	rm -rf $(OBJDIR)
 
 fclean: clean
 	rm -f $(NAME)
-	@make fclean -C libft --no-print-directory
 
 re: fclean all
 
-.PHONY: all clean fclean re FORCE
+.PHONY: all re fclean clean
 
+.SECONDARY: $(OBJECTS)
