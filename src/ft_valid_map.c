@@ -6,7 +6,7 @@
 /*   By: ael-azha <ael-azha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 17:27:17 by ael-azha          #+#    #+#             */
-/*   Updated: 2025/04/14 17:27:19 by ael-azha         ###   ########.fr       */
+/*   Updated: 2025/04/16 20:24:45 by ael-azha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	handle_character(char c, t_line_data *data)
 			data->first_line = 0;
 		}
 		else if (data->current_width != *data->width)
-			return (ft_putstr_fd("Inconsistent line or invalid character\n", 2),
+			return (ft_putstr_fd("Error : Inconsistent line or invalid character\n", 2),
 				1);
 		(*data->height)++;
 		data->current_width = 0;
@@ -41,7 +41,7 @@ int	process_line_data(t_line_data *data)
 		if (data->first_line)
 			*data->width = data->current_width;
 		else if (data->current_width != *data->width)
-			return (ft_putstr_fd("Inconsistent line or invalid character\n", 2),
+			return (ft_putstr_fd("Error : Inconsistent line or invalid character\n", 2),
 				1);
 		(*data->height)++;
 	}

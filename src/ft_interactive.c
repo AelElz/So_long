@@ -6,7 +6,7 @@
 /*   By: ael-azha <ael-azha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 17:26:58 by ael-azha          #+#    #+#             */
-/*   Updated: 2025/04/14 17:26:59 by ael-azha         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:23:44 by ael-azha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,12 @@ static void	move_player(t_map *data, int new_x, int new_y)
 	if (data->grad[new_y][new_x] == 'C')
 		data->collectibles--;
 	if (data->grad[new_y][new_x] == 'E' && data->collectibles == 0)
+	{
+		ft_putstr_fd("THE LAST PLAYER_MOVE : ", 1);
+		ft_putnbr_fd(data->player.player_steps, 1);
+		ft_putchar_fd('\n', 1);
 		ft_close_window(data);
+	}
 	else if (data->grad[new_y][new_x] == '0' || data->grad[new_y][new_x] == 'C')
 	{
 		data->grad[data->player.y][data->player.x] = '0';
